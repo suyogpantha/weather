@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather |Weather Dashboard</title>
+
+  
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="https://openweathermap.org/img/wn/{{ icon }}@2x.png" alt="Weather Logo">
+        <h1>Weather</h1>
+      </div>
+      <div class="date-display">
+        <i class="fas fa-calendar-alt"></i>
+        <span></span>
+      </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        <div class="search-container">
+          <input type="text" name="city" class="search-input" placeholder="Enter city name..." required>
+          <button type="submit" class="search-btn">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+      </form>
+
+    </section>
+
+    <!-- Main Weather Card -->
+    <section class="weather-card">
+      <div class="weather-primary">
+        <div class="temperature">{{temp}}°C</div>
+        <h2 class="city-name">{{city}}</h2>
+        <div class="weather-condition">
+          <img src="https://openweathermap.org/img/wn/{{ icon }}@2x.png" alt="Weather Icon" class="weather-icon" >
+          <span>{{desc}}</span>
+        </div>
+        <div class="weather-details">
+          <div class="detail-item">
+            <i class="fas fa-wind"></i>
+            <div>
+              <div class="detail-value">{{speed}}</div>
+              <div class="detail-label">Wind Speed </div>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-tint"></i>
+            <div>
+              <div class="detail-value">{{humidity}}</div>
+              <div class="detail-label">Humidity</div>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-compress-alt"></i>
+            <div>
+              <div class="detail-value">{{pressure}}</div>
+              <div class="detail-label">Pressure</div>
+            </div>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-eye"></i>
+            <div>
+              <div class="detail-value">{{visiable}}</div>
+              <div class="detail-label">Visibility</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="weather-secondary">
+        <img
+          src="https://images.unsplash.com/photo-1580193769210-b8d1c049a7d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80"
+          alt="Weather Illustration" style="width: 100%; border-radius: 10px;">
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stat-card">
+        <div class="stat-header">
+          <i class="fas fa-thermometer-half"></i>
+          <h3>Feels Like</h3>
+        </div>
+        <div class="stat-value">0°C</div>
+        <div class="stat-label">How it actually feels outside</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <i class="fas fa-temperature-high"></i>
+          <h3>Min/Max Temp</h3>
+        </div>
+        <div class="stat-value">N/A°C</div>
+        <div class="stat-label">Daily temperature range</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <i class="fas fa-cloud-sun"></i>
+          <h3>Conditions</h3>
+        </div>
+        <div class="stat-value"></div>
+        <div class="stat-label">Current weather conditions</div>
+      </div>
+    </section>
+
+    <!-- Forecast Section -->
+    <section class="forecast-section">
+      <h2 class="section-header">
+        <i class="fas fa-calendar-week"></i>
+        Daily Overview
+      </h2>
+
+      <div class="forecast-cards">
+        <div class="forecast-card">
+          <div class="forecast-day">Temperature</div>
+          <i class="fas fa-thermometer-three-quarters forecast-icon" style="font-size: 40px; color: #e74c3c;"></i>
+          <div class="forecast-temp">°C</div>
+          <div class="forecast-desc">Current</div>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-day">Humidity</div>
+          <i class="fas fa-tint forecast-icon" style="font-size: 40px; color: #3498db;"></i>
+          <div class="forecast-temp">%</div>
+          <div class="forecast-desc">Moisture Level</div>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-day">Wind</div>
+          <i class="fas fa-wind forecast-icon" style="font-size: 40px; color: #2ecc71;"></i>
+          <div class="forecast-temp"> m/s</div>
+          <div class="forecast-desc">Wind Speed</div>
+        </div>
+
+        <div class="forecast-card">
+          <div class="forecast-day">Pressure</div>
+          <i class="fas fa-compress-arrows-alt forecast-icon" style="font-size: 40px; color: #f39c12;"></i>
+          <div class="forecast-temp"> hPa</div>
+          <div class="forecast-desc">Atmospheric</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Weather. All rights reserved by Sujan</p>
+    </footer>
+  </div>
+
+
+
+  {% if messages %}
+  {% for message in messages %}
+    <script>
+      alertify.set('notifier','position', 'top-right');
+ alertify.error('{{message}}');
+    </script>
+  {% endfor %}
+    
+  {% endif %}
+
+
+</body>
+
+</html>

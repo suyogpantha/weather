@@ -1,0 +1,304 @@
+    :root {
+      --primary: #2c3e50;
+      --secondary: #34495e;
+      --accent: #3498db;
+      --text: #ecf0f1;
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --danger: #e74c3c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header Styles */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .logo h1 {
+      font-weight: 600;
+      font-size: 28px;
+    }
+
+    .date-display {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+
+    /* Search Section */
+    .search-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-container {
+      display: flex;
+      gap: 15px;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .search-input:focus {
+      outline: 2px solid var(--accent);
+    }
+
+    .search-btn {
+      padding: 15px 25px;
+      border: none;
+      border-radius: 10px;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-btn:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    /* Error Message */
+    .error-message {
+      background: var(--danger);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      /* display: {% if error %}block{% else %}none{% endif %}; */
+    }
+
+    /* Main Weather Card */
+    .weather-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .weather-primary {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .temperature {
+      font-size: 84px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #fff, #c3cfe2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .city-name {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .weather-condition {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-transform: capitalize;
+    }
+
+    .weather-icon {
+      width: 50px;
+      height: 50px;
+    }
+
+    .weather-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .detail-item i {
+      font-size: 20px;
+      color: var(--accent);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .stat-header i {
+      font-size: 24px;
+      color: var(--accent);
+    }
+
+    .stat-header h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* Forecast Section */
+    .forecast-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+    }
+
+    .section-header {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .forecast-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .forecast-card {
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .forecast-day {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .forecast-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 15px;
+    }
+
+    .forecast-temp {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 14px;
+      opacity: 0.7;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .weather-card {
+        grid-template-columns: 1fr;
+      }
+
+      .temperature {
+        font-size: 64px;
+      }
+
+      .city-name {
+        font-size: 28px;
+      }
+
+      .stats-section {
+        grid-template-columns: 1fr;
+      }
+    }

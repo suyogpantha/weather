@@ -19,7 +19,11 @@ def index(request):
         pressure=data['main']['pressure']
         visible=data['visibility']
         icon=data['weather'][0]['icon']
-        return render(request,'index.html',{'temp':temp,'desc':desc,'city':city , 'speed':speed , 'humidity':water , 'pressure':pressure , 'visiable':visible , 'icon':icon})
+        cityurl=f'https://api.unsplash.com/search/photos?query={city}&per_page=1&client_id=AocYclv8-7zt1nkxHU7cN4ZMEXoOoNvgBwIvjMYUufI'
+        response=requests.get(cityurl).json()
+        img=response['results'][0]['urls']['regular']
+        return render(request,'index.html',{'temp':temp,'desc':desc,'city':city , 'speed':speed , 'humidity':water , 'pressure':pressure , 'visiable':visible , 'icon':icon , 'img':img})
+    
     except:
         temp=0
         desc="no desc"
